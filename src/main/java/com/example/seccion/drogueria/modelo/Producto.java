@@ -39,6 +39,15 @@ public class Producto {
     public Producto() {
     }
 
+    public Producto(String nombre, String laboratorio, Calendar elaboracion, Calendar caducidad, Integer stock, double precio) {
+        this.nombre = nombre;
+        this.laboratorio = laboratorio;
+        this.elaboracion = elaboracion;
+        this.caducidad = caducidad;
+        this.stock = stock;
+        this.precio = precio;
+    }
+
     public Producto(Integer id_producto, String nombre, String laboratorio, Calendar elaboracion, Calendar caducidad, Integer stock, double precio) {
         this.id_producto = id_producto;
         this.nombre = nombre;

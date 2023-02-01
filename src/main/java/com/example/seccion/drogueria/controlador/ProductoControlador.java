@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,22 +41,22 @@ public class ProductoControlador {
     }
     
     @GetMapping("/productos/{id}")
-    public Optional<Producto> obtenerProductoId(Integer id){
+    public Optional<Producto> obtenerProductoId(@PathVariable Integer id){
         return servicioProducto.getProductoById(id);
     }
     
-    @PostMapping("/agregarProducto/{id}")
-    public Producto agregarproducto(Producto producto){
+    @PostMapping("/productos")
+    public Producto agregarproducto(@RequestBody Producto producto){
         return servicioProducto.nuevoProducto(producto);
     }
     
     @PutMapping("/modificarProduto/{id}")
-    public Producto modificarProducto(Producto producto){
+    public Producto modificarProducto(@PathVariable Producto producto){
         return servicioProducto.editarProducto(producto);
     }
     
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarProducto(Integer id){
+    public void eliminarProducto(@PathVariable Integer id){
          servicioProducto.eliminarProducto(id);
     }
 }
