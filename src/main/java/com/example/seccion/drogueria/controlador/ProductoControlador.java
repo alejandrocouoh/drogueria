@@ -9,6 +9,8 @@ import com.example.seccion.drogueria.servicio.ProductoServicio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,11 +50,12 @@ public class ProductoControlador {
     @PostMapping("/productos")
     public Producto agregarproducto(@RequestBody Producto producto){
         return servicioProducto.nuevoProducto(producto);
+//        return new ResponseEntity<Producto>(servicioProducto.nuevoProducto(producto),HttpStatus.OK);
     }
     
     @PutMapping("/modificarProduto/{id}")
-    public Producto modificarProducto(@PathVariable Producto producto){
-        return servicioProducto.editarProducto(producto);
+    public Producto modificarProducto(@PathVariable Integer id, @RequestBody Producto producto){
+        return servicioProducto.editarProducto(id,producto);
     }
     
     @DeleteMapping("/eliminar/{id}")

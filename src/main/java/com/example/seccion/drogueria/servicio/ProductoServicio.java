@@ -37,8 +37,8 @@ public class ProductoServicio {
         return repositorioProducto.save(producto);
     }
     
-    public Producto editarProducto(Producto producto){
-        Producto productomodificado = new Producto();
+    public Producto editarProducto(Integer id, Producto producto){
+        Producto productomodificado = repositorioProducto.findById(id).orElseThrow();
         productomodificado.setNombre(producto.getNombre());
         productomodificado.setLaboratorio(producto.getLaboratorio());
         productomodificado.setElaboracion(producto.getElaboracion());
@@ -50,5 +50,9 @@ public class ProductoServicio {
     
     public void eliminarProducto(Integer id){
         repositorioProducto.deleteById(id);
+    }
+
+    public Producto editarProducto(Optional<Producto> productomodificado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
